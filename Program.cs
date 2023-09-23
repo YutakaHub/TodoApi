@@ -11,7 +11,7 @@ var serverVersion = new MySqlServerVersion(new Version(8, 1, 0));
 
 builder.Services.AddDbContext<TodoContext>(
             dbContextOptions => dbContextOptions
-                .UseMySql(UserContext, serverVersion)
+                .UseMySql(connectionString, serverVersion)
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
