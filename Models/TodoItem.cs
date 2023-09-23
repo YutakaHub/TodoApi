@@ -8,5 +8,5 @@ public class TodoItem
   public string? TodoText { get; set; }
   public DateTime CompletionDate { get; set; }
   public bool CompleteFlg { get; set; }
-  public Timestamp? CompleteTimeStamp;
+  public DateTime CompleteDateTime { get; set; }
 }
