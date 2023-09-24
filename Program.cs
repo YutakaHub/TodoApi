@@ -3,19 +3,6 @@ using TodoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//CORS設定
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:3000")
-                          .AllowCredentials();
-                      });
-});
-
 // MySQLの接続文字列※注意
 string connectionString = "server=localhost;user=todo;password=todoq;database=todos";
 
@@ -46,12 +33,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
