@@ -3,6 +3,18 @@ using TodoApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//CORS設定
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000/");
+                      });
+});
+
 // MySQLの接続文字列※注意
 string connectionString = "server=localhost;user=todo;password=todoq;database=todos";
 
