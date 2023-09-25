@@ -17,6 +17,20 @@ builder.Services.AddDbContext<TodoContext>(
                 .EnableDetailedErrors()
         );
 
+//CROS追記
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:3000")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                      });
+});
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<TodoContext>(opt =>
@@ -32,8 +46,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 
+app.UseAuthentication(); // 認証を行うために追加
 app.UseAuthorization();
 
 app.MapControllers();
