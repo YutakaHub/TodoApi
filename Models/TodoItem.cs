@@ -10,7 +10,7 @@ public class TodoItem
   [Required]
   [StringLength(100)]
   public string? TodoText { get; set; }
-  public DateTime CompletionDate { get; set; }
+  public DateTime? CompletionDate { get; set; }
   public bool CompleteFlg { get; set; }
-  public DateTime CompleteDateTime { get; set; }
+  public DateTime? CompleteDateTime { get; set; }
 }
